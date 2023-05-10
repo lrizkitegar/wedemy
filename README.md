@@ -8,3 +8,17 @@
 | GET    | /instructor/:instructorId/courses/:courseId | mengubah course yang sudah ada dan dimiliki oleh instructor                                            |
 | POST   | /instructor/:instructorId/courses/:courseId |                                                                                                        |
 
+TODOS:
+1. seeder : 
+- Categories 
+- Users (role instructor) 
+- InstructorsDetails
+- Courses --> ini biar tampilan menarik buat 8 data atau lebih yaa sama column tambahin poster (string)
+2. register user (hanya untuk roles student) --> CR user & studentDetails (chaining create)
+3. login 
+4. read all courses
+5. read my couses by logged student
+6. delete studentcourses (unenroll) by logged student
+7. read my courses and total student  by logged instructor
+8. edit my courses by logged instructor
+9. logout 
