@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Student</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include("../_navbar") %>
+  <% valid = "" %>
+    <div class="container mt-5" >
+      <h1>Edit Course</h1>
+      <div style="width: 250px;" >
+        <img src="<%= course.poster %>" alt="invalid image" class="img-fluid">
+      </div>
+      <form class="w-100 mt-3" action="/instructor/<%= instructorId %>/courses/<%= courseId %>" method="post">
+        <% if(err.nameCurr && !err.nameErr) valid="is-valid" %>
+        <% if(err.nameErr) valid="is-invalid" %>
+        <label class="form-label mt-3" for="">Course Name:</label>
+        <input class="form-control <%= valid %>" type="text" name="name" id="" value="<%= course.name %>">
+        <% if(err.nameErr) { %>
+          <div class="invalid-feedback">
+            <%= err.nameErr %>
+          </div>
+          <%}%>
+          <label class="form-label mt-3" for="">Course Duration : </label>
+          <% if(err.durationCurr && !err.durationErr) valid="is-valid" %>
+          <% if(err.durationErr) valid="is-invalid" %>
+          <div class="input-group <%= valid %>">
+            <input class="form-control  <%= valid %>" type="number" name="duration" id="" value="<%= course.duration %>">
+            <span  class="input-group-text <%= valid %>" >Minutes</span>
+          </div>
+        <% if(err.durationErr) { %>
+          <div class="invalid-feedback">
+            <%= err.durationErr %>
+          </div>
+          <%}%>
+        <label class="form-label mt-3" for="">Poster image link :</label>
+        <% if(err.posterCurr && !err.posterErr) valid="is-valid" %>
+        <% if(err.posterErr) valid="is-invalid" %>
+        <input class="form-control <%= valid %>" type="text" name="poster" id="" value="<%= course.poster %>">
+        <% if(err.posterErr) { %>
+          <div class="invalid-feedback">
+            <%= err.posterErr %>
+          </div>
+          <%}%>
+        <label class="form-label mt-3" for="">Category</label>
+        <% if(err.CategoryIdCurr && !err.CategoryIdErr) valid="is-valid" %>
+        <% if(err.CategoryIdErr) valid="is-invalid" %>
+        <select class="form-select <%= valid %>" name="CategoryId" id="">
+          <% categories.forEach(el=>{ %>
+            <option value="<%= el.id %>" <%= el.id == course.CategoryId ? "selected" : "" %>><%= el.name %></option>
+          <% }) %>
+        </select>
+        <% if(err.CategoryIdErr) { %>
+          <div class="invalid-feedback">
+            <%= err.CategoryIdErr %>
+          </div>
+          <%}%>
+        <label class="form-label mt-3" for="">Description</label>
+        <% if(err.descriptionCurr && !err.descriptionErr) valid="is-valid" %>
+        <% if(err.descriptionErr) valid="is-invalid" %>
+        <textarea class="form-control <%= valid %>" name="description" id="" cols="30" rows="10"><%= course.description  %></textarea>
+        <% if(err.descriptionErr) { %>
+          <div class="invalid-feedback">
+            <%= err.descriptionErr %>
+          </div>
+          <%}%>
+        <button style="align-self: center;" class="btn btn-secondary mt-3 w-25" type="submit">Submit Edit</button>
+      </form>
+    </div>
+    <%- include("../_dummy") %>
+</body>
+</html>

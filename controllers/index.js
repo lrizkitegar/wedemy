@@ -2,11 +2,13 @@ const { Op } = require("sequelize")
 const { Category, Course, InstructorDetail, StudentDetail, User, StudentCourse } = require("../models")
 const bcrypt = require("bcryptjs")
 const validation = require("../helpers/validation")
+const nodemailer = require("../helpers/nodemailer")
 
 class Controller {
   static home(req, res) {
     const { studentId, instructorId } = req.params
-    res.render("home", { studentId, instructorId })
+    const { err } = req.query
+    res.render("home", { studentId, instructorId, err })
   }
 
   static loginGet(req, res) {
@@ -102,8 +104,20 @@ class Controller {
 
   static studentEnroll(req, res) {
     const { studentId, courseId } = req.params
+    const optionsStudent = {
+      include:User
+    }
+    let courseName
     StudentCourse.create({ StudentDetailId: studentId, CourseId: courseId })
       .then(_ => {
+        return Course.findByPk(courseId)
+      })
+      .then(course => {
+        courseName = course.name
+        return StudentDetail.findByPk(studentId,optionsStudent)
+      })
+      .then(student => {
+        nodemailer(courseName,student.User.email)
         res.redirect(`/student/${studentId}`)
       })
       .catch(err => {
@@ -127,7 +141,7 @@ class Controller {
         student.Courses.forEach(el => {
           ownedCourse.push(el.id)
         })
-        return Course.ownedCourse(ownedCourse,Category,search)
+        return Course.ownedCourse(ownedCourse, Category, search)
       })
       .then(courses => {
         res.render("student/courses", { courses, studentDetail: studentData, studentId, instructorId })
@@ -161,6 +175,60 @@ class Controller {
       res.redirect("/")
     })
   }
+
+  static instructorHome(req, res) {
+    const { studentId, instructorId } = req.params
+
+    InstructorDetail.istructorOwnedCourse(instructorId, Course, Category, StudentDetail)
+      .then(instructor => {
+        // res.send(instructor)
+        res.render("instructor/home", { instructor, studentId, instructorId })
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  }
+
+  static editCourse(req, res) {
+    const { studentId, instructorId, courseId } = req.params
+    const query = req.query
+    const options = {
+      include: {
+        model: Category
+      }
+    }
+    let listCat
+    Category.findAll()
+      .then(categories => {
+        listCat = categories
+        return Course.findByPk(courseId, options)
+      })
+      .then(course => {
+        res.render("instructor/edit-course", { categories: listCat, course, instructorId, studentId, courseId, err: query })
+      })
+  }
+
+  static editCoursePost(req, res) {
+    const { instructorId, courseId } = req.params
+    const { name, duration, description, poster, CategoryId } = req.body
+
+    Course.update({ name, duration, description, poster, CategoryId }, { where: { id: courseId } })
+      .then(_ => {
+        res.redirect(`/instructor/${instructorId}`)
+      })
+      .catch(err => {
+        if (err.name === "SequelizeValidationError") {
+          res.redirect(`/instructor/${instructorId}/courses/${courseId}?${err.errList}`)
+        } else {
+          res.send(err)
+        }
+      })
+
+  }
+
+
+
+
 }
 
 module.exports = Controller

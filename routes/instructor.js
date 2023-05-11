@@ -21,9 +21,9 @@ const instructorValid = (req, res, next) => {
   }
 }
 
-router.get("/:instructorId", instructorValid)
-router.get("/:instructorId/courses/:courseId", instructorValid)
-router.post("/:instructorId/courses/:courseId", instructorValid)
+router.get("/:instructorId", instructorValid, Controller.instructorHome)
+router.get("/:instructorId/courses/:courseId", instructorValid, Controller.editCourse)
+router.post("/:instructorId/courses/:courseId", instructorValid, Controller.editCoursePost)
 
 
 module.exports = router;
