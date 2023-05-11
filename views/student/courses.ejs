@@ -15,6 +15,16 @@
   <div class="container mt-5">
     <h1>Your courses <%= studentDetail.nameHonorific %></h1>
     <a style="align-self: flex-start;" class="btn btn-secondary mb-3 mt-3" href="/student/<%= studentId %>/">Back</a>
+    <form class="w-100" action="/student/<%= studentId %>/courses">
+      <div class="row mb-3">
+        <div class="col-10">
+          <input class="form-control" type="text" name="search" id="" placeholder="Search...">
+        </div>
+        <div class="col-2 d-flex" style="flex-direction: column;">
+          <button style="align-self: flex-end;" class="btn btn-secondary w-100" type="submit" >Search</button>
+        </div>
+      </div>
+    </form>
     <div class="card-container">
       <% courses.forEach(el=>{ %>
       <div class="card mb-3">

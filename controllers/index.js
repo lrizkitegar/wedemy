@@ -75,18 +75,9 @@ class Controller {
 
   static studentHome(req, res) {
     const { studentId, instructorId } = req.params
+    const { search } = req.query
     let studentData
     let ownedCourse = []
-    const options = {
-      include: {
-        model: Category
-      },
-      where: {
-        id: {
-          [Op.notIn]: ownedCourse
-        }
-      }
-    }
     const studentOptions = {
       include: {
         model: Course
@@ -99,7 +90,7 @@ class Controller {
           ownedCourse.push(el.id)
         })
         // res.send(student)
-        return Course.findAll(options)
+        return Course.notOwnedCourse(ownedCourse, Category, search)
       })
       .then(courses => {
         res.render("student/home", { courses, studentDetail: studentData, studentId, instructorId })
@@ -122,18 +113,9 @@ class Controller {
 
   static studentCourses(req, res) {
     const { studentId, instructorId } = req.params
+    const { search } = req.query
     let studentData
     let ownedCourse = []
-    const options = {
-      include: {
-        model: Category
-      },
-      where: {
-        id: {
-          [Op.in]: ownedCourse
-        }
-      }
-    }
     const studentOptions = {
       include: {
         model: Course
@@ -145,7 +127,7 @@ class Controller {
         student.Courses.forEach(el => {
           ownedCourse.push(el.id)
         })
-        return Course.findAll(options)
+        return Course.ownedCourse(ownedCourse,Category,search)
       })
       .then(courses => {
         res.render("student/courses", { courses, studentDetail: studentData, studentId, instructorId })
