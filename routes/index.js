@@ -12,15 +12,28 @@ const loginCheck = (req, res, next) => {
   }
 }
 
-
+const alrdyLogin = (req, res, next) => {
+  let { studentId, instructorId, statusLogin } = req.session
+  if (!studentId && !instructorId) {
+    return next()
+  } else if (studentId && statusLogin) {
+    req.session.statusLogin = false
+    return res.redirect(`/student/${studentId}`)
+  }else if (instructorId && statusLogin) {
+    req.session.statusLogin = false
+    return res.redirect(`/instructor/${instructorId}`)
+  }
+  next()
+}
 
 router
+  .get("/logout", Controller.logout)
+  .use(alrdyLogin)
   .get("/", Controller.home)
-  .get("/login",Controller.loginGet)
-  .post("/login",Controller.loginPost)
-  .get("/logout",Controller.logout)
-  .get("/register",Controller.registerGet)
-  .post("/register",Controller.registerPost)
+  .get("/login", Controller.loginGet)
+  .post("/login", Controller.loginPost)
+  .get("/register", Controller.registerGet)
+  .post("/register", Controller.registerPost)
   .use(loginCheck)
   .use("/student", require('./student'))
   .use("/instructor", require('./instructor'))

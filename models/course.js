@@ -3,6 +3,7 @@
 const {
   Model, Op
 } = require('sequelize');
+const minutesToHours = require('../helpers/minutesToHours');
 module.exports = (sequelize, DataTypes) => {
   class Course extends Model {
     /**
@@ -10,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+
+    get durationFormatHour() {
+      return minutesToHours(this.duration)
+    }
 
     static notOwnedCourse(arrOwned, modelCat, search) {
       const options = {

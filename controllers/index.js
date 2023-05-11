@@ -78,6 +78,7 @@ class Controller {
   static studentHome(req, res) {
     const { studentId, instructorId } = req.params
     const { search } = req.query
+    req.session.statusLogin = true
     let studentData
     let ownedCourse = []
     const studentOptions = {
@@ -105,7 +106,7 @@ class Controller {
   static studentEnroll(req, res) {
     const { studentId, courseId } = req.params
     const optionsStudent = {
-      include:User
+      include: User
     }
     let courseName
     StudentCourse.create({ StudentDetailId: studentId, CourseId: courseId })
@@ -114,10 +115,10 @@ class Controller {
       })
       .then(course => {
         courseName = course.name
-        return StudentDetail.findByPk(studentId,optionsStudent)
+        return StudentDetail.findByPk(studentId, optionsStudent)
       })
       .then(student => {
-        nodemailer(courseName,student.User.email)
+        nodemailer(courseName, student.User.email)
         res.redirect(`/student/${studentId}`)
       })
       .catch(err => {
@@ -179,7 +180,7 @@ class Controller {
 
   static instructorHome(req, res) {
     const { studentId, instructorId } = req.params
-
+    req.session.statusLogin = true
     InstructorDetail.istructorOwnedCourse(instructorId, Course, Category, StudentDetail)
       .then(instructor => {
         // res.send(instructor)
