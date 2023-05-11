@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>poster</td>
+            <td>description</td>
+            <td>duration</td>
+            <td>name</td>
+            <td>CategoryId</td>
+            <td>action</td>
+        </tr>
+        <% instructorDetail.Courses.forEach(el =>{ %>
+            <tr>
+                <td><%= el.poster %></td>
+                <td><%= el.description %></td>
+                <td><%= el.duration %></td>
+                <td><%= el.name %></td>
+                <td><%= el.CategoryId %></td>
+                <td><a href="/instructor/<%= el.InstructorDetailId %>/courses/<%= el.id%>">edit</a></td>
+            </tr>
+       <% }) %>
+        <tr>
+        </tr>
+    </table>
+</body>
+</html>
