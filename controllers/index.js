@@ -127,7 +127,7 @@ class Controller {
         student.Courses.forEach(el => {
           ownedCourse.push(el.id)
         })
-        return Course.ownedCourse(ownedCourse,Category,search)
+        return Course.ownedCourse(ownedCourse, Category, search)
       })
       .then(courses => {
         res.render("student/courses", { courses, studentDetail: studentData, studentId, instructorId })
@@ -160,6 +160,53 @@ class Controller {
       if (err) return res.send(err)
       res.redirect("/")
     })
+  }
+
+  static showInstructorId(req, res) {
+    const { instructorId } = req.params
+    // console.log(instructorId, '<<<')
+    InstructorDetail.findOne({
+      where: {
+        id: instructorId
+      },
+      include: Course
+    })
+      .then(instructorDetail => {
+        // res.send (instructorDetail)
+        res.render('instructor', { instructorDetail })
+      })
+      .catch(err => {
+        res.send(err);
+      })
+  }
+
+  static editInstructor(req, res) {
+    const { courseId } = req.params
+    Course.findByPk(courseId, {
+      include: Category
+    })
+      .then(course => {
+        res.render("instructorEdit", { course })
+      })
+      .catch(err => {
+        res.send(err);
+      })
+  }
+
+  static instructorSubmit(req, res) {
+    const { name, CategoryId, description, duration, poster } = req.body
+    const { instructorId, courseId } = req.params
+    Course.update({ name, CategoryId, description, duration, poster }, {
+      where: {
+        id: courseId
+      }
+    })
+      .then(_ => {
+        res.redirect(`/instructor/${instructorId}`)
+      })
+      .catch(err => {
+        res.send(err)
+      })
   }
 }
 

@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method = 'post' action="/instructor/<%=course.InstructorDetailId%>/courses/<%=course.id%>"> 
+        <label for="">name</label>
+        <input type="text" name="name" value="<%=course.name%>"> 
+        <label for="">description</label>
+        <input type="text" name="description" value=" <%=course.description%>">
+        <label for="">CategoryId</label>
+        <input type="text" name="CategoryId" value="<%=course.CategoryId%>">
+        <label for="">duration</label>
+        <input type="text" name="duration" value="<%=course.duration%>">
+        <label for="">poster</label>
+        <input type="text" name="poster" value="<%=course.poster%>">
+
+        <button type="submit"> sumbit </button>
+    </form>
+</body>
+</html>
