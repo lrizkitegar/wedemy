@@ -76,7 +76,6 @@ class Controller {
   static studentHome(req, res) {
     const { studentId, instructorId } = req.params
     const { search } = req.query
-    req.session.statusLogin = true
     let studentData
     let ownedCourse = []
     const studentOptions = {
@@ -166,7 +165,6 @@ class Controller {
 
   static instructorHome(req, res) {
     const { studentId, instructorId } = req.params
-    req.session.statusLogin = true
     InstructorDetail.istructorOwnedCourse(instructorId, Course, Category, StudentDetail)
       .then(instructor => {
         // res.send(instructor)
