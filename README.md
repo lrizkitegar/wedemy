@@ -2,7 +2,8 @@
 |--------|------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | GET    | /                                              | akan di arahkan ke halaman login jika belum login, dan di arahkan ke user yang sesuai jika sudah login |
 | GET    | /login                                         | login                                                                                                  |
-| GET    | /logout                                        |                                                                                                        |
+| GET    | /register                                      | register new student                                                                                    |
+| GET    | /logout                                        | logout                                                                                                  |
 | GET    | /student/:studentId/                           | menampilkan seluruh list course yang tersedia                                                          |
 | GET    | /student/:studentId/courses/:courseId/enroll   | menambahkan course yang di pilih oleh student                                                          |
 | GET    | /student/:studentId/courses/:courseId/unenroll | menghapus course yang di pilih oleh student                                                            |
