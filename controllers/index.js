@@ -55,14 +55,12 @@ class Controller {
     if (validate.status === true) {
       return res.redirect(`/register?${validate.err}`)
     }
-
-    let userId
     User.create({ email, password })
       .then(user => {
-        userId = user.id
-        return StudentDetail.create({ UserId: userId, name, gender, bio })
+        return StudentDetail.create({ UserId: user.id, name, gender, bio })
       })
       .then(_ => {
+        nodemailer(name, email)
         res.redirect("/login")
       })
       .catch(err => {
@@ -105,20 +103,8 @@ class Controller {
 
   static studentEnroll(req, res) {
     const { studentId, courseId } = req.params
-    const optionsStudent = {
-      include: User
-    }
-    let courseName
     StudentCourse.create({ StudentDetailId: studentId, CourseId: courseId })
       .then(_ => {
-        return Course.findByPk(courseId)
-      })
-      .then(course => {
-        courseName = course.name
-        return StudentDetail.findByPk(studentId, optionsStudent)
-      })
-      .then(student => {
-        nodemailer(courseName, student.User.email)
         res.redirect(`/student/${studentId}`)
       })
       .catch(err => {

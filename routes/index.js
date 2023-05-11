@@ -13,13 +13,15 @@ const loginCheck = (req, res, next) => {
 }
 
 const alrdyLogin = (req, res, next) => {
-  let { studentId, instructorId, statusLogin } = req.session
+  let { studentId, instructorId } = req.session
+  let url = req.originalUrl
+  let statusUrl = url.includes("student") || url.includes("instructor")
   if (!studentId && !instructorId) {
     return next()
-  } else if (studentId && statusLogin) {
+  } else if (studentId && !statusUrl) {
     req.session.statusLogin = false
     return res.redirect(`/student/${studentId}`)
-  }else if (instructorId && statusLogin) {
+  }else if (instructorId && !statusUrl) {
     req.session.statusLogin = false
     return res.redirect(`/instructor/${instructorId}`)
   }
