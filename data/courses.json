@@ -1,0 +1,98 @@
+[
+  {
+    "InstructorId": 3,
+    "CategoryId": 1,
+    "name": "Learn Assembly Language by Making Games for the Atari 2600",
+    "description": "This course will teach you the basics of programming games for the classic Atari 2600 console using 6502 Assembly Language. If you are a complete beginner or if you are a pro developer, chances are you will learn something new and enjoy poking the bytes of a simple and minimal hardware architecture that is the classic Atari 2600 VCS.",
+    "duration": 120,
+    "poster": "https://img-c.udemycdn.com/course/240x135/2140678_b330_7.jpg"
+  },
+  {
+    "InstructorId": 2,
+    "CategoryId": 1,
+    "name": "x86 64-bit Assembly Language: Step-by-Step Tutorial",
+    "description": "This course is intended to teach you x86 64-bit assembly programming. It covers basics about computer architecture, data representation and low-level programming. In this course, we will take you through the step-by-step tutorials and teach you how to write assembly programs for x86 processors.",
+    "duration": 40,
+    "poster": "https://img-c.udemycdn.com/course/240x135/2853152_cdea_3.jpg"
+  },
+  {
+    "InstructorId": 2,
+    "CategoryId": 1,
+    "name": "x86 Assembly Language Programming From Ground Up",
+    "description": "By the end of this course you will master  the x86 Core Instruction Set, the x86 MMX Extension Instruction Set, the x86 Streaming SIMD Extension (SSE) Instruction Set and the x86 Advanced Vector Extension (AVX ) Instruction Set. You will be able to develop complex Image Processing Algorithms in x86 Assembly. You will be able to develop complex mathematical algorithms in x86 assembly .You will also be able to write robust programs that mix C++ and x86 Assembly files. ",
+    "duration": 60,
+    "poster": "https://img-c.udemycdn.com/course/240x135/2023774_c640_2.jpg"
+  },
+  {
+    "InstructorId": 3,
+    "CategoryId": 1,
+    "name": "Assembly Language Programming for Reverse Engineering",
+    "description": "If you have been using debuggers to reverse engineer programs but wished you had more understanding of Assembly Language, then this course is for you. We will cover enough assembly language to allow you to understand how to modify exe files to insert your own code or, to modify existing exe files to do things which it was not intended to do.",
+    "duration": 120,
+    "poster": "https://img-b.udemycdn.com/course/240x135/5053884_aac8.jpg"
+  },
+  {
+    "InstructorId": 1,
+    "CategoryId": 5,
+    "name": "The Complete Web Developer Course 3.0",
+    "description": "Sign up to The Complete Web Developers Course 3.0 today and revolutionise your learning. Effortlessly embed the fundamentals. Refresh your groundwork. Dig deeper than ever. Start building powerful apps and cash-earning websites today—and enjoy bigger, brighter opportunities.",
+    "duration": 120,
+    "poster": "https://img-c.udemycdn.com/course/240x135/764164_de03_5.jpg"
+  },
+  {
+    "InstructorId": 1,
+    "CategoryId": 5,
+    "name": "Build Responsive Real-World Websites with HTML and CSS",
+    "description": "This is the best and most complete course for starting your web development journey that you will find on Udemy. It's an all-in-one package that takes you from knowing nothing about HTML and CSS, to building beautiful websites using tools and technologies that professional web developers use every single day.",
+    "duration": 60,
+    "poster": "https://img-b.udemycdn.com/course/240x135/437398_46c3_10.jpg"
+  },
+  {
+    "InstructorId": 1,
+    "CategoryId": 5,
+    "name": "The Complete Web Development Course - Build 15 Projects",
+    "description": "Well let me tell you: If you are looking for a truly 100% Comprehensive Web Development Course, that will take you from learning the basics to mastering the most advanced web development techniques, then be certain that you have come to the right place.",
+    "duration": 40,
+    "poster": "https://img-c.udemycdn.com/course/240x135/548278_b005_9.jpg"
+  },
+  {
+    "InstructorId": 3,
+    "CategoryId": 4,
+    "name": "The Ultimate Dark Web, Anonymity, Privacy & Security Course",
+    "description": "This course is highly practical but won't neglect the theory, first you'll understand the inner-workings of each topic and each technique covered, then you'll learn how to apply it in real-life scenarios ultimately teaching you how to use the dark net and the clear net in a more private, more anonymouse and more secure manner, so by the end of the course you'll be able to combine the skills you learned and use them in any situation that requires more privacy, more anonymity or more security.",
+    "duration": 60,
+    "poster": "https://img-c.udemycdn.com/course/240x135/2281984_870a_21.jpg"
+  },
+  {
+    "InstructorId": 1,
+    "CategoryId": 4,
+    "name": "Website Hacking / Penetration Testing",
+    "description": "Welcome to my this comprehensive course on Website penetration testing. In this course you'll learn website / web applications hacking! This course assumes you have NO prior knowledge in hacking, and by the end of it you'll be at a high level, being able to hack & discover bugs in websites like black-hat hackers and secure them like security experts!",
+    "duration": 40,
+    "poster": "https://img-c.udemycdn.com/course/240x135/984734_90be_6.jpg"
+  },
+  {
+    "InstructorId": 3,
+    "CategoryId": 4,
+    "name": "Cyber Security: From Beginner to Expert (2023)",
+    "description": "A beginner level comprehensive course that includes step-by-step explanations of core security concepts along with follow-up quizzes and hands on labs to ensure a solid learning for the course taker.",
+    "duration": 120,
+    "poster": "https://img-c.udemycdn.com/course/240x135/3654420_6ef3_8.jpg"
+  },
+  {
+    "InstructorId": 3,
+    "CategoryId": 2,
+    "name": "Introduction to Computer Networks for Non-Techies",
+    "description": "Are you a non-techie interested in learning about computer networks? Are you a business or aspiring IT professional that needs to better understand how networks work? Then you have come to the right place!",
+    "duration": 40,
+    "poster": "https://img-b.udemycdn.com/course/240x135/580876_a07a_2.jpg"
+  },
+  {
+    "InstructorId": 2,
+    "CategoryId": 2,
+    "name": "Fundamentals of Networking Engineering",
+    "description": "This course is primarily designed for backend engineers who built applications, services or APIs and want to take their skillset to the next level. If you are a frontend engineer who are interested in the backend and have attempted to build backend apps before this course is also for you. If you are a network engineer who already know the basic fundamentals and want to start building backend applications effectively this course might help you bridge the gap",
+    "duration": 60,
+    "poster": "https://img-c.udemycdn.com/course/240x135/4574556_9059_12.jpg"
+  }
+]

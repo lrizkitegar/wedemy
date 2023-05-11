@@ -1,0 +1,17 @@
+[
+  {
+    "email": "instructor1@protonmail.com",
+    "password": "Zy9nNhRG5gTM",
+    "role": "Instructor"
+  },
+  {
+    "email": "instructor2@protonmail.com",
+    "password": "Ze6kO2A3OSBD",
+    "role": "Instructor"
+  },
+  {
+    "email": "instructor3@protonmail.com",
+    "password": "biBFDBX6TfOv",
+    "role": "Instructor"
+  }
+]

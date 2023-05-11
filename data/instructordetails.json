@@ -1,0 +1,17 @@
+[
+  {
+    "UserId": 1,
+    "name": "Lucy Kelsey",
+    "education": "S1"
+  },
+  {
+    "UserId": 2,
+    "name": "Cari Mardling",
+    "education": "S2"
+  },
+  {
+    "UserId": 3,
+    "name": "Willyt Hadlee",
+    "education": "S3"
+  }
+]
