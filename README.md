@@ -13,11 +13,11 @@
 | POST   | /instructor/:instructorId/courses/:courseId    | submit course yang sudah di edit                                                                       |
 
 TODOS:
-1. seeder : 
-- Categories 
-- Users (role instructor) 
-- InstructorsDetails
-- Courses --> ini biar tampilan menarik buat 8 data atau lebih yaa sama column tambahin poster (string)
+~~1. seeder :~~
+~~- Categories~~
+~~- Users (role instructor)~~
+~~- InstructorsDetails~~
+~~- Courses --> ini biar tampilan menarik buat 8 data atau lebih yaa sama column tambahin poster (string)~~
 2. register user (hanya untuk roles student) --> CR user & studentDetails (chaining create)
 3. login 
 4. read all courses
