@@ -26,4 +26,5 @@ router.get("/:instructorId/courses/:courseId", instructorValid, Controller.editC
 router.post("/:instructorId/courses/:courseId", instructorValid, Controller.editCoursePost)
 
 
+
 module.exports = router;

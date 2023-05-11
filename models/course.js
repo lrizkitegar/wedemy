@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       }
       if (search) {
         options.where.name = {
-          [Op.iLike]: `%${search}%`
+          [Op.iLike] : `%${search}%`
         }
       }
       return this.findAll(options)
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       }
       if (search) {
         options.where.name = {
-          [Op.iLike]: `%${search}%`
+          [Op.iLike] : `%${search}%`
         }
       }
       return this.findAll(options)

@@ -176,6 +176,7 @@ class Controller {
     })
   }
 
+
   static instructorHome(req, res) {
     const { studentId, instructorId } = req.params
 
@@ -213,17 +214,18 @@ class Controller {
     const { name, duration, description, poster, CategoryId } = req.body
 
     Course.update({ name, duration, description, poster, CategoryId }, { where: { id: courseId } })
+
       .then(_ => {
         res.redirect(`/instructor/${instructorId}`)
       })
       .catch(err => {
+
         if (err.name === "SequelizeValidationError") {
           res.redirect(`/instructor/${instructorId}/courses/${courseId}?${err.errList}`)
         } else {
           res.send(err)
         }
       })
-
   }
 
 
