@@ -45,11 +45,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks: {
       beforeCreate: (instance) => {
-        let password = instance.password
-        instance.role = "Student"
         const salt = bcrypt.genSaltSync(10);
-        if (password) password = bcrypt.hashSync(password, salt);
-        instance.password = password
+        instance.password = bcrypt.hashSync(instance.password, salt);
+        instance.role = "Student"
       },
       validationFailed: (instance, options, error) => {
         const dataValues = { ...instance.dataValues }
