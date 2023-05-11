@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.User)
-      this.hasMany(models.Course,{through:"StudentCourses"})
+      this.belongsToMany(models.Course,{through:"StudentCourses"})
     }
   }
   StudentDetail.init({

@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.Category)
       this.belongsTo(models.InstructorDetail)
-      this.hasMany(models.StudentDetail, { through: "StudentCourses" })
+      this.belongsToMany(models.StudentDetail, { through: "StudentCourses" })
     }
   }
   Course.init({
