@@ -57,13 +57,103 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Course.init({
-    InstructorDetailId: DataTypes.INTEGER,
-    CategoryId: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    duration: DataTypes.INTEGER,
-    poster: DataTypes.STRING
+    InstructorDetailId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Instructor Id cannot empty"
+        },
+        notNull: {
+          msg: "Instructor Id cannot empty"
+        }
+      }
+    },
+    CategoryId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Category cannot empty"
+        },
+        notNull: {
+          msg: "Category cannot empty"
+        }
+      }
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Name cannot empty"
+        },
+        notNull: {
+          msg: "Name cannot empty"
+        }
+      }
+
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Description cannot empty"
+        },
+        notNull: {
+          msg: "Description cannot empty"
+        }
+      }
+
+    },
+    duration: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Duration cannot empty"
+        },
+        notNull: {
+          msg: "Duration cannot empty"
+        },
+        min: {
+          args:30,
+          msg:"Minimum course duration is 30 Minutes"
+        }
+      }
+    },
+    poster: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Poster cannot empty"
+        },
+        notNull: {
+          msg: "Poster cannot empty"
+        }
+      }
+
+    }
   }, {
+    hooks: {
+      validationFailed: (instance, options, error) => {
+        const dataValues = { ...instance.dataValues }
+        const exclude = ["id", "createdAt", "updatedAt", "InstructorDetailId"]
+        let errList = {}
+        for (const field in dataValues) {
+          if (!exclude.includes(field) && dataValues[field]) {
+            errList[`${field}Curr`] = dataValues[field]
+          }
+        }
+        error.errors.forEach(el => {
+          errList[`${el.path}Err`] = (el.message)
+        })
+        errList = new URLSearchParams(errList).toString()
+        error.errList = errList
+      }
+    },
     sequelize,
     modelName: 'Course',
   });

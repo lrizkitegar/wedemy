@@ -25,6 +25,9 @@
         </div>
       </div>
     </form>
+    <% if(courses.length == 0) { %>
+      <div class="text-danger"> NO COURSE TAKEN </div>
+    <% }%> %>
     <div class="card-container">
       <% courses.forEach(el=>{ %>
       <div class="card mb-3">
@@ -32,6 +35,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= el.name %></h5>
           <h6 class="card-subtitle mb-2 text-body-secondary"><%= el.Category.name %></h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Duration : <%= el.duration %> Minutes</h6>
           <p class="card-text text-truncate"><%= el.description %></p>
         </div>
         <div class="w-100"
