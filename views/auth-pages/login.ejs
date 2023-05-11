@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOGIN</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body style="background-color: rgb(221, 157, 104);">
+  <body>
+    <%- include("../_navbar") %>
+  
+    <div class="container mt-5" >
+      <h1>LOGIN USER</h1>
+      <% if(err){ %>
+        <div class="alert alert-danger w-50">
+          <%= err %>
+        </div>
+      <% } %>
+      <form class="w-50 mt-3" action="/login" method="post">
+        <label class="form-label" for="">Email</label>
+        <input class="form-control mb-3" type="email" name="email" id="">
+        <label class="form-label" for="">Password</label>
+        <input class="form-control mb-3" type="password" name="password" id="">
+        <button class="btn btn-secondary" type="submit">LOGIN</button>
+      </form>
+    </div>
+    <%- include("../_dummy") %>
+  </body>
+  </html>
+</body>
+</html>

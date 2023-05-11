@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Student</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include("../_navbar") %>
+  <% valid = "" %>
+    <div class="container mt-5" >
+      <h1>REGISTER NEW STUDENT</h1>
+      <form class="w-100 mt-3" action="/register" method="post">
+        <% if(err.emailCurr && !err.emailErr) valid="is-valid" %>
+        <% if(err.emailErr) valid="is-invalid" %>
+        <label class="form-label mt-3" for="">Email</label>
+        <input class="form-control <%= valid %>" type="email" name="email" id="" value="<%= err.emailCurr %>">
+        <% if(err.emailErr) { %>
+          <div class="invalid-feedback">
+            <%= err.emailErr %>
+          </div>
+          <%}%>
+        <label class="form-label mt-3" for="">Password</label>
+        <% if(!err.passwordErr) valid="" %>
+        <% if(err.passwordErr) valid="is-invalid" %>
+        <input class="form-control  <%= valid %>" type="password" name="password" id="">
+        <% if(err.passwordErr) { %>
+          <div class="invalid-feedback">
+            <%= err.passwordErr %>
+          </div>
+          <%}%>
+        <label class="form-label mt-3" for="">Name</label>
+        <% if(err.nameCurr && !err.nameErr) valid="is-valid" %>
+        <% if(err.nameErr) valid="is-invalid" %>
+        <input class="form-control <%= valid %>" type="text" name="name" id="" value="<%= err.nameCurr %>">
+        <% if(err.nameErr) { %>
+          <div class="invalid-feedback">
+            <%= err.nameErr %>
+          </div>
+          <%}%>
+        <label class="form-label mt-3" for="">Gender</label>
+        <% if(err.genderCurr && !err.genderErr) valid="is-valid" %>
+        <% if(err.genderErr) valid="is-invalid" %>
+        <select class="form-select <%= valid %>" name="gender" id="">
+          <option value="" selected hidden disabled>Select..</option>
+          <option value="Male" <%= err.genderCurr == "Male" ? "selected" : "" %>>Male</option>
+          <option value="Female" <%= err.genderCurr == "Female" ? "selected" : "" %>>Female</option>
+        </select>
+        <% if(err.genderErr) { %>
+          <div class="invalid-feedback">
+            <%= err.genderErr %>
+          </div>
+          <%}%>
+        <label class="form-label mt-3" for="">Bio</label>
+        <% if(err.bioCurr && !err.bioErr) valid="is-valid" %>
+        <% if(err.bioErr) valid="is-invalid" %>
+        <textarea class="form-control <%= valid %>" name="bio" id="" cols="30" rows="10"><%= err.bioCurr  %></textarea>
+        <% if(err.bioErr) { %>
+          <div class="invalid-feedback">
+            <%= err.bioErr %>
+          </div>
+          <%}%>
+        <button style="align-self: center;" class="btn btn-secondary mt-3 w-25" type="submit">REGISTER</button>
+      </form>
+    </div>
+    <%- include("../_dummy") %>
+</body>
+</html>
