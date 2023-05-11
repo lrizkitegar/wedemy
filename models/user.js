@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require("bcryptjs")
 const {
   Model
 } = require('sequelize');
@@ -16,10 +17,56 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg:"Email field cannot be empty!"
+        },
+        notEmpty: {
+          msg:"Email field cannot be empty!"
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg:"Password field cannot be empty!"
+        },
+        notEmpty: {
+          msg:"Password field cannot be empty!"
+        }
+      }
+    },
     role: DataTypes.STRING
   }, {
+    hooks: {
+      beforeCreate: (instance) => {
+        let password = instance.password
+        instance.role = "Student"
+        const salt = bcrypt.genSaltSync(10);
+        if (password) password = bcrypt.hashSync(password, salt);
+        instance.password = password
+      },
+      validationFailed: (instance, options, error) => {
+        const dataValues = { ...instance.dataValues }
+        const exclude = ["id", "createdAt", "updatedAt", "role","password"]
+        let errList = {}
+        for (const field in dataValues) {
+          if (!exclude.includes(field) && dataValues[field]) {
+            errList[`${field}Curr`] = dataValues[field]
+          }
+        }
+        error.errors.forEach(el => {
+          errList[`${el.path}Err`] = (el.message)
+        })
+        errList = new URLSearchParams(errList).toString()
+        error.errList = errList
+      }
+    },
     sequelize,
     modelName: 'User',
   });

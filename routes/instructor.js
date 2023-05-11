@@ -8,9 +8,22 @@ const express = require('express')
 const router = express.Router()
 const Controller = require('../controllers')
 
-router.get("/:instructorId")
-router.get("/:instructorId/courses/:courseId")
-router.post("/:instructorId/courses/:courseId")
+const instructorValid = (req, res, next) => {
+  const sesinstructorId = req.session.instructorId
+  const curinstructorId = req.params.instructorId
+  const curStudentId = req.params.studentId
+  if (curStudentId) {
+    res.redirect(`/student/${curStudentId}`)
+  } else if (sesinstructorId != curinstructorId) {
+    res.redirect(`/instructor/${sesinstructorId}`)
+  } else {
+    next()
+  }
+}
+
+router.get("/:instructorId", instructorValid)
+router.get("/:instructorId/courses/:courseId", instructorValid)
+router.post("/:instructorId/courses/:courseId", instructorValid)
 
 
 module.exports = router;
