@@ -12,6 +12,10 @@
 | GET    | /instructor/:instructorId/courses/:courseId    | mengubah course yang sudah ada dan dimiliki oleh instructor                                            |
 | POST   | /instructor/:instructorId/courses/:courseId    | submit course yang sudah di edit                                                                       |
 
+SCHEMA ERD:
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/ERD.png)
+
 TODOS:
 1. ~~seeder :~~
 - ~~Categories~~
