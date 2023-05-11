@@ -1,17 +1,17 @@
 [
   {
     "email": "instructor1@protonmail.com",
-    "password": "Zy9nNhRG5gTM",
+    "password": "qwerty1",
     "role": "Instructor"
   },
   {
     "email": "instructor2@protonmail.com",
-    "password": "Ze6kO2A3OSBD",
+    "password": "qwerty2",
     "role": "Instructor"
   },
   {
     "email": "instructor3@protonmail.com",
-    "password": "biBFDBX6TfOv",
+    "password": "qwerty3",
     "role": "Instructor"
   }
 ]
