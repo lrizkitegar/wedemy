@@ -7,11 +7,11 @@ const Controller = require('../controllers')
 const studentValid = (req, res, next) => {
   const sesStudentId = req.session.studentId
   const curStudentId = req.params.studentId
-  const curInstructorId = req.params.instructorId
+  const curInstructorId = req.session.instructorId
   if (curInstructorId) {
-    res.redirect(`/Instructor/${curInstructorId}`)
+    return res.redirect(`/instructor/${curInstructorId}`)
   } else if (sesStudentId != curStudentId) {
-    res.redirect(`/student/${sesStudentId}`)
+    return res.redirect(`/student/${sesStudentId}`)
   } else {
     next()
   }
