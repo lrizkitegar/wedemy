@@ -1,3 +1,4 @@
+require('dotenv').config({path: 'setting.env'})
 const express = require('express')
 const router = require('./routes')
 const session = require('express-session')
@@ -19,7 +20,6 @@ app
     }
   }))
   .use(router)
-
 
 app.listen(port, () => {
   console.log(`WEDEMY listening on port ${port}`)

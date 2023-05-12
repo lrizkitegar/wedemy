@@ -12,14 +12,14 @@ module.exports = async (name, studentEmail) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: `xdragonfly11.steam@hotmail.com`, // generated ethereal user
-      pass: `Cr0n0sph3r3`, // generated ethereal password
+      user: process.env.NODEMAILER_EMAIL, // generated ethereal user
+      pass: process.env.NODEMAILER_PASSWORD, // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: 'WEDEMY <xdragonfly11.steam@hotmail.com>', // sender address
+    from: `WEDEMY <${process.env.NODEMAILER_EMAIL}>`, // sender address
     to: `${studentEmail}`,//"rhyzq.dprogramerz@gmail.com", 
     subject: "Welcome to WEDEMY ✔", // Subject line
     text: `Account successfully created with name : "${name}"`, // plain text body
