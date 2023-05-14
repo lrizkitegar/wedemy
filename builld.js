@@ -8,10 +8,9 @@ const build = async () => {
     console.log('Starting the build process...');
 
     // Build step 1
-    await runCommand('npm install');
 
     // Build step 2
-    await runCommand('npx sequelize db:create');
+    await runCommand('');
     await runCommand('npx sequelize db:migrate');
     await runCommand('npx sequelize db:seed:all');
 
