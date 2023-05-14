@@ -21,6 +21,4 @@ app
   }))
   .use(router)
 
-app.listen(port, () => {
-  console.log(`WEDEMY listening on port ${port}`)
-})
+app.listen()
