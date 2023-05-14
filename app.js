@@ -3,7 +3,7 @@ const express = require('express')
 const router = require('./routes')
 const session = require('express-session')
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 app
   .set('view engine', 'ejs')
@@ -21,4 +21,6 @@ app
   }))
   .use(router)
 
-app.listen()
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
