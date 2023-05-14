@@ -2,23 +2,25 @@
   "development": {
     "username": "postgres",
     "password": "avgIPSwUq9cRlQBmNKiR",
-    "database": "wedemyDB",
+    "database": "wedemyDB_DEV",
     "host": "containers-us-west-167.railway.app",
     "dialect": "postgres",
     "port": "7004"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "postgres",
+    "password": "avgIPSwUq9cRlQBmNKiR",
+    "database": "wedemyDB_TEST",
+    "host": "containers-us-west-167.railway.app",
+    "dialect": "postgres",
+    "port": "7004"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "postgres",
+    "password": "avgIPSwUq9cRlQBmNKiR",
+    "database": "wedemyDB_PROD",
+    "host": "containers-us-west-167.railway.app",
+    "dialect": "postgres",
+    "port": "7004"
   }
 }
